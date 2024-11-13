@@ -73,10 +73,10 @@ export function Home() {
           <nav className="w-full max-w-xs">
             <ul className="flex items-center justify-end gap-4 max-sm:justify-center">
               <li className="text-white">
-                <Link to={'/sign-in'}>Lista de convidados</Link>
+                <Link to={'/guest-list'}>Lista de convidados</Link>
               </li>
               <li className="text-white">
-                <Link to={'/sign-in'}>Contato</Link>
+                <Link to={'/contact'}>Contato</Link>
               </li>
             </ul>
           </nav>
@@ -167,11 +167,11 @@ export function Home() {
           <p className="mb-4 text-xl font-semibold text-muted-foreground">
             Featured venues
           </p>
-          <div className="flex items-start gap-12 rounded-r-lg shadow-lg">
+          <div className="flex items-start gap-12 rounded-r-lg shadow-lg max-md:flex-col">
             <img
               src={aboutImg}
               alt=""
-              className="min-h-[467px] w-full max-w-[361px]"
+              className="min-h-[467px] w-full max-w-[361px] max-md:h-[300px] max-md:w-full max-md:max-w-[700px] max-md:rounded-lg"
             />
 
             <div className="flex min-h-[450px] flex-col justify-between pr-4 font-mono antialiased">
@@ -195,7 +195,7 @@ export function Home() {
                 </p>
               </div>
 
-              <div className="flex h-full w-full items-center justify-between">
+              <div className="flex h-full w-full items-center justify-between max-md:pb-4">
                 <ArrowLeft className="h-5 w-5 cursor-pointer text-muted-foreground" />
                 <ArrowRight className="h-5 w-5 cursor-pointer text-muted-foreground" />
               </div>
