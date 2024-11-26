@@ -3,6 +3,7 @@ import {
   ICreate,
   UsersRepository,
 } from '../interfaces/users-repository.interface'
+import { User } from '@prisma/client'
 
 export class PrismaUsersRepository implements UsersRepository {
   async create({ name, age, message, bond }: ICreate) {
@@ -19,5 +20,11 @@ export class PrismaUsersRepository implements UsersRepository {
     })
 
     return user
+  }
+
+  async listAll(): Promise<User[]> {
+    const users = await prisma.user.findMany({ include: { Bonds: true } })
+
+    return users
   }
 }

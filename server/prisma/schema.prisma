@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -39,4 +39,12 @@ model Bond {
   user_id String?
 
   @@map("bond")
+}
+
+model KeyWord {
+  id   String @unique @default(uuid())
+  name String
+  type Role   @default(GUEST)
+
+  @@map("key_word")
 }

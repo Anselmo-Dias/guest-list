@@ -15,4 +15,5 @@ export interface ICreate {
 
 export interface UsersRepository {
   create(data: ICreate): Promise<User>
+  listAll(): Promise<User[]>
 }

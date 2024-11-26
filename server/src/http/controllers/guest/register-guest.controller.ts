@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
-import { RegisterGuestService } from '../../services/register-guest.service'
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users.repository'
+import { RegisterGuestService } from '@/services/guest/register-guest.service'
 
 export async function RegisterGuest(
   request: FastifyRequest,
@@ -32,6 +32,6 @@ export async function RegisterGuest(
 
     return reply.status(201).send()
   } catch (error) {
-    reply.status(500).send('Internal server error')
+    throw error
   }
 }

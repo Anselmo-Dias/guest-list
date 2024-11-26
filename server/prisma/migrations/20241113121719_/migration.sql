@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "bond" ALTER COLUMN "age" DROP NOT NULL;
