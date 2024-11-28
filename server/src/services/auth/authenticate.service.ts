@@ -1,24 +1,22 @@
-import { KeyWordRepository } from '@/repositories/interfaces/key-word-repository'
-import { KeyWord } from '@prisma/client'
+import { KeywordRepository } from '@/repositories/interfaces/keyword-repository'
+import { Keyword } from '@prisma/client'
 import { UnauthorizedError } from '../errors/unauthorized.error'
 
 interface AuthenticateServiceRequest {
-  keyWord: string
+  keyword: string
 }
 
 interface AuthenticateServiceResponse {
-  key: KeyWord
+  key: Keyword
 }
 
 export class AuthenticateService {
-  constructor(private keyWordRepository: KeyWordRepository) {}
+  constructor(private keyWordRepository: KeywordRepository) {}
 
   async execute({
-    keyWord,
+    keyword,
   }: AuthenticateServiceRequest): Promise<AuthenticateServiceResponse> {
-    const keysWord = await this.keyWordRepository.findAll()
-
-    const key = keysWord.find((item) => item.name === keyWord)
+    const key = await this.keyWordRepository.findByName(keyword)
 
     if (!key) {
       throw new UnauthorizedError()

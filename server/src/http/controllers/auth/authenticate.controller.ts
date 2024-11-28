@@ -1,4 +1,4 @@
-import { PrismaKeyWordRepository } from '@/repositories/prisma/prisma-key-word.repository'
+import { PrismaKeywordRepository } from '@/repositories/prisma/prisma-keyword.repository'
 import { AuthenticateService } from '@/services/auth/authenticate.service'
 import { UnauthorizedError } from '@/services/errors/unauthorized.error'
 import { FastifyReply, FastifyRequest } from 'fastify'
@@ -19,18 +19,36 @@ export async function Authenticate(
       return reply.status(400).send({ message: 'Key word is required' })
     }
 
-    const keyWordRepository = new PrismaKeyWordRepository()
+    const keyWordRepository = new PrismaKeywordRepository()
     const authenticateService = new AuthenticateService(keyWordRepository)
 
     const { key } = await authenticateService.execute({
-      keyWord: body.data.keyWord,
+      keyword: body.data.keyWord,
     })
 
     const token = await reply.jwtSign({
       keyId: key.id,
     })
 
-    return reply.send({ token })
+    const refreshToken = await reply.jwtSign(
+      {
+        keyId: key.id,
+      },
+      {
+        sign: {
+          expiresIn: '7d',
+        },
+      },
+    )
+
+    return reply
+      .setCookie('refreshToken', refreshToken, {
+        path: '/',
+        secure: true,
+        sameSite: true,
+        httpOnly: true,
+      })
+      .send({ token })
   } catch (error) {
     if (error instanceof UnauthorizedError) {
       return reply.status(401).send({ message: error.message })
