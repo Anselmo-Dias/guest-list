@@ -10,7 +10,7 @@ export async function Authenticate(
 ) {
   try {
     const bodySchema = z.object({
-      keyWord: z.string(),
+      keyword: z.string(),
     })
 
     const body = bodySchema.safeParse(request.body)
@@ -23,7 +23,7 @@ export async function Authenticate(
     const authenticateService = new AuthenticateService(keyWordRepository)
 
     const { key } = await authenticateService.execute({
-      keyword: body.data.keyWord,
+      keyword: body.data.keyword,
     })
 
     const token = await reply.jwtSign({

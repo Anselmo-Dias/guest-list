@@ -1,7 +1,17 @@
 import axios from 'axios'
 
-import { env } from '../env'
-
 export const api = axios.create({
-  baseURL: env.VITE_API_URL,
+  baseURL: 'http://localhost:3000',
 })
+
+api.interceptors.request.use(
+  async (config) => {
+    const userTokenExpiration = await localStorage.getItem('token')
+
+    if (userTokenExpiration) {
+      config.headers.Authorization = `Bearer ${userTokenExpiration}`
+    }
+    return config
+  },
+  (error) => Promise.reject(error),
+)

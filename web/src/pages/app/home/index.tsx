@@ -2,6 +2,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import {
   ArrowDown,
   ArrowLeft,
@@ -17,13 +18,13 @@ import { z } from 'zod'
 
 import aboutImg from '@/assets/about.png'
 import guestImg from '@/assets/guest.png'
-import locationImg from '@/assets/location.png'
 
-import { Button } from '../../components/ui/button'
-import { Checkbox } from '../../components/ui/checkbox'
-import { Input } from '../../components/ui/input'
-import { Separator } from '../../components/ui/separator'
-import { Textarea } from '../../components/ui/textarea'
+import { Button } from '../../../components/ui/button'
+import { Checkbox } from '../../../components/ui/checkbox'
+import { Input } from '../../../components/ui/input'
+import { Separator } from '../../../components/ui/separator'
+import { Textarea } from '../../../components/ui/textarea'
+import { homeStore } from '../../../store/home-store'
 
 const dynamicFieldSchema = z.object({
   companionName: z
@@ -41,7 +42,7 @@ const formSchema = z.object({
   dynamicFields: z.array(dynamicFieldSchema),
 })
 
-type IGuestForm = z.infer<typeof formSchema>
+export type IGuestForm = z.infer<typeof formSchema>
 
 export function Home() {
   const [hasCompanion, setHasCompanion] = useState(false)
@@ -54,15 +55,24 @@ export function Home() {
       dynamicFields: [{ companionName: '', companionBond: '' }],
     },
   })
-
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'dynamicFields',
   })
 
+  const { createGuest } = homeStore()
+
+  const { mutateAsync: registerGuest } = useMutation({
+    mutationFn: createGuest,
+  })
+
   async function handleRegister(data: IGuestForm) {
-    console.log(data)
-    toast.success('Cadastro realizado com sucesso!')
+    try {
+      await registerGuest(data)
+      toast.success('Cadastro realizado com sucesso')
+    } catch {
+      toast.error('Error ao realizar cadastro ')
+    }
   }
 
   return (
@@ -328,18 +338,6 @@ export function Home() {
               >
                 Cadastrar
               </Button>
-            </div>
-            <div className="col flex w-full flex-col items-center">
-              <img src={locationImg} alt="" className="w-[250px]" />
-
-              <div className="mt-6 text-left text-muted-foreground">
-                <p className="mb-2 font-semibold text-foreground">
-                  Head office
-                </p>
-                <p>Via Roma, Milano Italy</p>
-
-                <p>Phone: +39 322 221211</p>
-              </div>
             </div>
           </form>
         </section>

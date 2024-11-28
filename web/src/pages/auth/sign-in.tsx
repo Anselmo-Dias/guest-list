@@ -1,19 +1,25 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
+import { signInStore } from '../../store/sign-in-store'
 
 const signInFormSchema = z.object({
-  word: z.string().min(1, { message: 'Esse campo é obrigatório' }),
+  keyword: z.string().min(1, { message: 'Esse campo é obrigatório' }),
 })
 
 type ISignInForm = z.infer<typeof signInFormSchema>
 
 export function SignIn() {
+  const navigate = useNavigate()
+  const { signIn } = signInStore()
   const {
     register,
     handleSubmit,
@@ -22,8 +28,19 @@ export function SignIn() {
     resolver: zodResolver(signInFormSchema),
   })
 
-  function handleSignIn(data: ISignInForm) {
-    console.log(data)
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  })
+
+  async function handleSignIn({ keyword }: ISignInForm) {
+    try {
+      await authenticate({ keyword })
+
+      toast.success('Acesso autorizado')
+      navigate('/', { replace: true })
+    } catch {
+      toast.error('Credenciais inválidas')
+    }
   }
 
   return (
@@ -49,10 +66,10 @@ export function SignIn() {
                 id="word"
                 type="text"
                 className="w-full"
-                {...register('word')}
+                {...register('keyword')}
               />
-              {errors.word?.message && (
-                <p className="text-red-700">{errors.word?.message}</p>
+              {errors.keyword?.message && (
+                <p className="text-red-700">{errors.keyword?.message}</p>
               )}
             </div>
 
