@@ -9,15 +9,15 @@ export async function RegisterGuest(
 ) {
   try {
     const bodySchema = z.object({
-      name: z.string().max(50),
-      age: z.number().max(150).optional(),
+      name: z.string().min(1).max(50),
+      age: z.number().max(200).optional(),
       message: z.string().max(255).optional(),
       bond: z
         .array(
           z.object({
-            name: z.string().max(50),
-            age: z.number().max(150).optional(),
-            bond: z.string().max(50),
+            name: z.string().min(1).max(50),
+            age: z.number().max(200).optional(),
+            bond: z.string().min(1).max(50),
           }),
         )
         .optional(),

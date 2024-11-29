@@ -25,6 +25,12 @@ export class PrismaUsersRepository implements UsersRepository {
   async listAll(): Promise<User[]> {
     const users = await prisma.user.findMany({ include: { Bonds: true } })
 
-    return users
+    const formattedUsers = users.map((user) => ({
+      ...user,
+      bond: user.Bonds,
+      Bonds: undefined,
+    }))
+
+    return formattedUsers
   }
 }

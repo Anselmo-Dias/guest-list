@@ -4,13 +4,13 @@ import { api } from '../lib/axios'
 
 interface IBond {
   name: string
-  age: number
+  age: number | null
   bond: string
 }
 
 interface ICreateGuestBody {
   name: string
-  age: number
+  age: number | null
   message: string
   bond: IBond[]
 }

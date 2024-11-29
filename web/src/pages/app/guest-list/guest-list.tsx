@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 
 import { Pagination } from '../../../components/pagination'
@@ -9,9 +10,17 @@ import {
   TableHeader,
   TableRow,
 } from '../../../components/ui/table'
+import { guestListStore } from '../../../store/guest-list-store'
 import { GuestTableRow } from './components/guest-table-row'
 
 export function GuestList() {
+  const { getAllGuestList } = guestListStore()
+
+  const { data } = useQuery({
+    queryKey: ['guestList'],
+    queryFn: getAllGuestList,
+  })
+
   return (
     <>
       <Helmet title="Convidados" />
@@ -39,8 +48,8 @@ export function GuestList() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {Array.from({ length: 10 }).map((_, i) => {
-                  return <GuestTableRow key={i} />
+                {data?.users?.map((item) => {
+                  return <GuestTableRow key={item.id} item={item} />
                 })}
               </TableBody>
             </Table>

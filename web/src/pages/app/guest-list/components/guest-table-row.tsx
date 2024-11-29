@@ -3,15 +3,21 @@ import { Eye } from 'lucide-react'
 import { Button } from '../../../../components/ui/button'
 import { Dialog, DialogTrigger } from '../../../../components/ui/dialog'
 import { TableCell, TableRow } from '../../../../components/ui/table'
+import { IGuestList } from '../../../../interfaces/guest-list-interface'
 import { GuestDetails } from './guest-details'
 
-export function GuestTableRow() {
+interface IGuestTableRowProps {
+  item: IGuestList
+}
+export function GuestTableRow({ item }: IGuestTableRowProps) {
   return (
     <TableRow>
-      <TableCell>Cicada</TableCell>
-      <TableCell>20</TableCell>
-      <TableCell>2</TableCell>
-      <TableCell>Vou comer mt</TableCell>
+      <TableCell>{item.name}</TableCell>
+      <TableCell>{item.age}</TableCell>
+      <TableCell>{item.bond?.length ?? ''}</TableCell>
+      <TableCell>
+        {item.message ? item.message.slice(0, 20).concat('...') : ''}
+      </TableCell>
       <TableCell>
         <Dialog>
           <DialogTrigger asChild>
@@ -21,7 +27,11 @@ export function GuestTableRow() {
             </Button>
           </DialogTrigger>
 
-          <GuestDetails />
+          <GuestDetails
+            guestName={item.name}
+            guestMessage={item?.message}
+            guestBond={item.bond}
+          />
         </Dialog>
       </TableCell>
     </TableRow>
