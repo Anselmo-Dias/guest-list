@@ -9,7 +9,7 @@ import fastifyCors from '@fastify/cors'
 export const app = fastify()
 
 app.register(fastifyCors, {
-  origin: '*',
+  origin: 'https://grazy-e-thiago.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
 })
 
