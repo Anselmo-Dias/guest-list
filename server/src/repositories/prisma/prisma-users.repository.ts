@@ -33,4 +33,22 @@ export class PrismaUsersRepository implements UsersRepository {
 
     return formattedUsers
   }
+
+  async findById(id: string): Promise<User | null> {
+    const user = await prisma.user.findUnique({
+      where: {
+        id,
+      },
+    })
+
+    return user
+  }
+
+  async delete(id: string): Promise<void> {
+    await prisma.user.delete({
+      where: {
+        id,
+      },
+    })
+  }
 }

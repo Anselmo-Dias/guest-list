@@ -17,10 +17,16 @@ interface ICreateGuestBody {
 
 interface IHomeStore {
   createGuest: (data: ICreateGuestBody) => Promise<void>
+  logout: () => void
 }
 
 export const homeStore = create<IHomeStore>(() => ({
   createGuest: async (data: ICreateGuestBody) => {
     await api.post('/guest', data)
   },
+
+  logout: () => {
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
 }))

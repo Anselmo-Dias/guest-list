@@ -5,6 +5,7 @@ import { Authenticate } from './controllers/auth/authenticate.controller'
 import { VerifyJWT } from '@/middleware/verify-jwt.middleware'
 import { RefreshToken } from './controllers/auth/refresh.controller'
 import { VerifyUserRole } from '@/middleware/verify-user-role.middleware'
+import { DeleteGuest } from './controllers/guest/delete-guest.controller'
 
 export async function appRoutes(app: FastifyInstance) {
   app.post('/sign-in', Authenticate)
@@ -16,5 +17,10 @@ export async function appRoutes(app: FastifyInstance) {
     '/guest',
     { onRequest: [VerifyJWT, await VerifyUserRole('ADMIN')] },
     ListAllGuest,
+  )
+  app.delete(
+    '/guest/:id',
+    { onRequest: [VerifyJWT, await VerifyUserRole('ADMIN')] },
+    DeleteGuest,
   )
 }

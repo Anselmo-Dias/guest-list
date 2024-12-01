@@ -16,4 +16,6 @@ export interface ICreate {
 export interface UsersRepository {
   create(data: ICreate): Promise<User>
   listAll(): Promise<User[]>
+  findById(id: string): Promise<User | null>
+  delete(id: string): Promise<void>
 }

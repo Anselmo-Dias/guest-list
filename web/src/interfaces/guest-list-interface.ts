@@ -12,3 +12,14 @@ export interface IGuestList {
   message: string
   bond: IBond[]
 }
+
+
+export interface IUsersList {
+  users: {
+    id: string
+    name: string
+    age: number | null
+    message: string
+    bond: IBond[]
+  }[]
+}

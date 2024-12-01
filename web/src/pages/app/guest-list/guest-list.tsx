@@ -6,6 +6,7 @@ import { Input } from '../../../components/ui/input'
 import {
   Table,
   TableBody,
+  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -31,7 +32,7 @@ export function GuestList() {
         <div className="space-y-2.5">
           <form className="flex items-center gap-2">
             <span className="text-sm font-semibold">Filtros</span>
-            <Input placeholder="Nome do convidado" className="h-8 w-[320px]" />
+            <Input placeholder="Nome do convidado" className="h-8 w-[320px]" disabled/>
           </form>
 
           <div className="rounded-md border">
@@ -48,14 +49,18 @@ export function GuestList() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {data?.users?.map((item) => {
+                {data?.users?.length ? data?.users?.map((item) => {
                   return <GuestTableRow key={item.id} item={item} />
-                })}
+                }) : (<TableRow>
+                  <TableCell colSpan={4} className='text-center'>
+                  <p>Não existe nenhum convidado cadastrado</p>
+                  </TableCell>
+                </TableRow>)}
               </TableBody>
             </Table>
           </div>
 
-          <Pagination pageIndex={0} totalCont={108} perPage={5} />
+          {/* <Pagination pageIndex={0} totalCont={108} perPage={5} /> */}
         </div>
       </div>
     </>

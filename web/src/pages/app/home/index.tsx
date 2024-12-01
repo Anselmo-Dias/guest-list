@@ -16,13 +16,16 @@ import foto8Img from '@/assets/foto_8.jpg'
 
 import { useTheme } from '../../../components/theme/theme-provider'
 import { HomeForm } from './components/home-form'
+import { homeStore } from '../../../store/home-store'
 
 export function Home() {
+  const { logout } = homeStore()
   const { setTheme } = useTheme()
 
   useEffect(() => {
     setTheme('light')
   }, [setTheme])
+
 
   return (
     <>
@@ -36,6 +39,9 @@ export function Home() {
               </li>
               <li className="text-white">
                 <Link to={'/contact'}>Contato</Link>
+              </li>
+              <li className="text-white">
+                <button onClick={logout}>sair</button>
               </li>
             </ul>
           </nav>

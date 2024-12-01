@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
 import { api } from '../lib/axios'
+import { toast } from 'sonner'
 
 interface IBond {
   id: string
@@ -21,6 +22,7 @@ interface IGuestList {
 
 interface IGuestListStore {
   getAllGuestList: () => Promise<IGuestList>
+  deleteGuest: (id: string) => Promise<void>
 }
 
 export const guestListStore = create<IGuestListStore>(() => ({
@@ -29,4 +31,8 @@ export const guestListStore = create<IGuestListStore>(() => ({
 
     return response.data
   },
+
+  deleteGuest: async (id: string) => {
+    await api.delete(`/guest/${id}`)
+  }
 }))

@@ -49,7 +49,7 @@ export function GuestDetails({
             <TableRow>
               <TableHead className="w-[100px]">Nome</TableHead>
               <TableHead className="flex-1">Idade</TableHead>
-              <TableHead className="flex items-center justify-between">
+              <TableHead className="flex items-center justify-end">
                 Vínculo
               </TableHead>
             </TableRow>
