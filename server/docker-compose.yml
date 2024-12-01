@@ -2,9 +2,9 @@ version: '3'
 
 services:
   db:
-    image: mysql:9
+    image: postgres:latest
     container_name: guest-list-db
     env_file:
       - ./.env
     ports:
-      - 3306:3306
+      - 5432:5432
