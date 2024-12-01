@@ -9,7 +9,7 @@ import { ThemeProvider } from './components/theme/theme-provider'
 import { queryClient } from './lib/react-query'
 import { router } from './router'
 
-export function App() {
+export default function App() {
   return (
     <HelmetProvider>
       <ThemeProvider storageKey="guest-list-theme" defaultTheme="light">
