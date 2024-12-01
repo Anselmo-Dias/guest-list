@@ -22,11 +22,6 @@ export function Header() {
             <Users className="h-4 w-4" />
             Convidados
           </NavLink>
-
-          <NavLink to="/contact">
-            <Contact className="h-4 w-4" />
-            Contato
-          </NavLink>
         </nav>
         <div className="ml-auto flex items-center">
           <ThemeToggle />

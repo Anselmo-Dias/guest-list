@@ -38,7 +38,7 @@ export function Home() {
                 <Link to={'/guest-list'}>Lista de convidados</Link>
               </li>
               <li className="text-white">
-                <Link to={'/contact'}>Contato</Link>
+                <a target='_blank' href='https://api.whatsapp.com/send?phone=+557998661644&text=Gostaria+de+tirar+uma+duvida'>Contato</a>
               </li>
               <li className="text-white">
                 <button onClick={logout}>sair</button>
@@ -70,7 +70,7 @@ export function Home() {
           <div className="mt-6 flex max-w-5xl flex-wrap items-center justify-center gap-4">
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto1Img}
                 alt="foto do casal"
               />
@@ -81,7 +81,7 @@ export function Home() {
 
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto2Img}
                 alt="foto do casal"
               />
@@ -92,7 +92,7 @@ export function Home() {
 
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto3Img}
                 alt="foto do casal"
               />
@@ -103,7 +103,7 @@ export function Home() {
 
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto4Img}
                 alt="foto do casal"
               />
@@ -114,7 +114,7 @@ export function Home() {
 
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto5Img}
                 alt="foto do casal"
               />
@@ -125,7 +125,7 @@ export function Home() {
 
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto6Img}
                 alt="foto do casal"
               />
@@ -136,7 +136,7 @@ export function Home() {
 
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto7Img}
                 alt="foto do casal"
               />
@@ -147,7 +147,7 @@ export function Home() {
 
             <div className="relative max-h-[153px] w-full max-w-60">
               <img
-                className="h-[153px] w-[248px] rounded-lg"
+                className="h-[153px] w-[248px] rounded-lg cursor-pointer"
                 src={foto8Img}
                 alt="foto do casal"
               />
