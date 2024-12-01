@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 
-import { Pagination } from '../../../components/pagination'
 import { Input } from '../../../components/ui/input'
 import {
   Table,

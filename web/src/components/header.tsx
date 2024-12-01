@@ -1,4 +1,4 @@
-import { Contact, Home, Users } from 'lucide-react'
+import { Home, Users } from 'lucide-react'
 
 import { NavLink } from './nav-link'
 import { ThemeToggle } from './theme/theme-toggle'
