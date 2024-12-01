@@ -2,14 +2,28 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import aboutImg from '@/assets/about.png'
-import guestImg from '@/assets/guest.png'
+import foto1Img from '@/assets/foto_1.jpg'
+import foto2Img from '@/assets/foto_2.jpg'
+import foto3Img from '@/assets/foto_3.jpg'
+import foto4Img from '@/assets/foto_4.jpg'
+import foto5Img from '@/assets/foto_5.jpg'
+import foto6Img from '@/assets/foto_6.jpg'
+import foto7Img from '@/assets/foto_7.jpg'
+import foto8Img from '@/assets/foto_8.jpg'
 
+import { useTheme } from '../../../components/theme/theme-provider'
 import { HomeForm } from './components/home-form'
 
 export function Home() {
+  const { setTheme } = useTheme()
+
+  useEffect(() => {
+    setTheme('light')
+  }, [setTheme])
+
   return (
     <>
       <div className="flex h-screen w-full items-center justify-center bg-secondary-image bg-cover bg-center bg-no-repeat">
@@ -26,20 +40,18 @@ export function Home() {
             </ul>
           </nav>
         </header>
-
         <div className="flex w-full max-w-3xl flex-col items-center justify-center px-2">
-          <h1 className="mb-4 w-full text-center text-5xl font-bold max-sm:text-3xl">
-            Discover your perfect Italian wedding venue
+          <h1 className="mb-4 w-full text-center text-5xl font-bold text-muted max-sm:text-3xl">
+            Juntos até a eternidade
           </h1>
-          <p className="mb-6 w-full max-w-lg text-center">
-            Sagittis adipiscing posuere id adipiscing aliquam posuere. Aliquet
-            faucibus duis accumsan aliquet tempor diam dignissim suscipit. Nibh
-            urna ut diam fames.
+          <p className="mb-6 w-full max-w-lg text-center font-medium text-muted">
+            “Para que todos vejam e saibam e, juntamente, entendam que a mão do
+            Senhor fez isso’’. - Isaías 41:20
           </p>
 
           <div className="flex flex-col items-center justify-center">
-            <ArrowDown className="h-6 w-6 animate-bounce" />
-            <p>Continue descendo</p>
+            <ArrowDown className="h-6 w-6 animate-bounce text-white" />
+            <p className="text-muted">Continue descendo</p>
           </div>
         </div>
       </div>
@@ -51,58 +63,90 @@ export function Home() {
 
           <div className="mt-6 flex max-w-5xl flex-wrap items-center justify-center gap-4">
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto1Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                10/11/2024
               </p>
             </div>
 
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto2Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                05/05/2024
               </p>
             </div>
 
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto3Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                12/06/2023
               </p>
             </div>
 
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto4Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                09/01/2024
               </p>
             </div>
 
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto5Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                07/03/2024
               </p>
             </div>
 
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto6Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                24/04/2020
               </p>
             </div>
 
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto7Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                24/11/2022
               </p>
             </div>
 
             <div className="relative max-h-[153px] w-full max-w-60">
-              <img className="w-full" src={guestImg} alt="Florida" />
+              <img
+                className="h-[153px] w-[248px] rounded-lg"
+                src={foto8Img}
+                alt="foto do casal"
+              />
               <p className="absolute bottom-2 left-4 text-lg text-white">
-                Florida
+                20/10/2023
               </p>
             </div>
           </div>
@@ -110,11 +154,11 @@ export function Home() {
 
         <section className="wrapper mb-8 mt-12 w-full max-w-5xl">
           <p className="mb-4 text-xl font-semibold text-muted-foreground">
-            Featured venues
+            Eclesiastes 4:12
           </p>
           <div className="flex items-start gap-12 rounded-r-lg shadow-lg max-md:flex-col">
             <img
-              src={aboutImg}
+              src={foto2Img}
               alt=""
               className="min-h-[467px] w-full max-w-[361px] max-md:h-[300px] max-md:w-full max-md:max-w-[700px] max-md:rounded-lg"
             />
@@ -122,21 +166,15 @@ export function Home() {
             <div className="flex min-h-[450px] flex-col justify-between pr-4 font-mono antialiased">
               <div>
                 <h3 className="text-gra mb-1 text-3xl font-bold">
-                  Villa Balbianello
+                  O amor não é apenas uma emoção
                 </h3>
-                <p className="mb-4 font-normal text-muted-foreground">
-                  Lake Como
-                </p>
+                <p className="mb-4 font-normal text-muted-foreground">G&T</p>
                 <p className="mb-8">
-                  The whole complex consists of two residential buildings, a
-                  church, and a portico (known as Loggia Durini) that can host
-                  weddings and events in a truly unique setting. But the special
-                  feature of Villa Balbianello is above all the vast garden that
-                  surrounds the dwellings, with magnificent holm oaks pruned
-                  into an umbrella shape so as to offer a splendid view of Lake
-                  Como from inside the The whole complex consists of two
-                  residential buildings, a church, and a portico known as Loggia
-                  Durini that
+                  {` O amor não é apenas uma emoção terrena, mas sim um presente
+                  divino. Somos lembrados em Eclesiastes 4:12 "O cordão de três
+                  dobras não se rompe com facilidade". Assim, essa união está
+                  entregue aos cuidados do Senhor, confiando que Ele é a
+                  terceira dobra que fortalece e sustenta.`}
                 </p>
               </div>
 

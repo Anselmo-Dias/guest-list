@@ -23,7 +23,6 @@ export const router = createBrowserRouter([
   {
     path: '',
     element: <PrivateRoute protectedComponent={Home} />,
-    errorElement: <NotFound />,
   },
 
   {

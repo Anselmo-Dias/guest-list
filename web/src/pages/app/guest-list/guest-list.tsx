@@ -25,7 +25,7 @@ export function GuestList() {
     <>
       <Helmet title="Convidados" />
 
-      <div className="flex w-full flex-col gap-4">
+      <div className="flex w-full flex-col gap-4 p-8 pt-6">
         <h1 className="text-3xl font-bold tracking-tight">Convidados</h1>
 
         <div className="space-y-2.5">
